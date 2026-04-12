@@ -14,7 +14,7 @@ import { Button } from "@/components/ui/button";
 import RentPinLogo from '@/components/icons/logo';
 import Link from 'next/link';
 
-const HomeNav = () => {
+const Nav = () => {
     const navItems = [
         { name: 'Explore', href: '/' },
         { name: 'Saved', href: '#' },
@@ -95,4 +95,4 @@ const HomeNav = () => {
     );
 }
 
-export default HomeNav;
+export default Nav;
