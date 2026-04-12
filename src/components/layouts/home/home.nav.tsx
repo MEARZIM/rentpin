@@ -12,10 +12,11 @@ import {
 } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import RentPinLogo from '@/components/icons/logo';
+import Link from 'next/link';
 
 const HomeNav = () => {
     const navItems = [
-        { name: 'Explore', href: '#' },
+        { name: 'Explore', href: '/' },
         { name: 'Saved', href: '#' },
         { name: 'Listings', href: '#' },
         { name: 'Profile', href: '#' },
@@ -38,19 +39,19 @@ const HomeNav = () => {
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center gap-10 text-sm font-medium text-[#404944]">
                 {navItems.map((item) => (
-                    <a
+                    <Link
                         key={item.name}
                         href={item.href}
                         className="hover:text-[#006948] transition-colors relative group"
                     >
                         {item.name}
                         <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#006948] transition-all group-hover:w-full" />
-                    </a>
+                    </Link>
                 ))}
                 {/* Signature Primary CTA */}
-                <button className="bg-linear-to-br from-[#006948] to-[#00855d] text-white px-7 py-2.5 rounded-full font-semibold hover:shadow-xl hover:opacity-95 transition-all active:scale-95">
+                <Link href={'/login'} className="bg-linear-to-br from-[#006948] to-[#00855d] text-white px-7 py-2.5 rounded-full font-semibold hover:shadow-xl hover:opacity-95 transition-all active:scale-95">
                     Become a Host
-                </button>
+                </Link>
             </div>
 
             {/* Mobile Drawer  */}
@@ -83,9 +84,9 @@ const HomeNav = () => {
                                 </a>
                             ))}
                             <hr className="border-[#bccac0]/15" />
-                            <button className="w-full bg-[#006948] text-white py-4 rounded-2xl font-bold shadow-lg shadow-[#006948]/10 active:scale-[0.98] transition-transform">
+                            <Link href={'/login'} className="w-full bg-[#006948] text-white text-center py-4 rounded-2xl font-bold shadow-lg shadow-[#006948]/10 active:scale-[0.98] transition-transform">
                                 Become a Host
-                            </button>
+                            </Link>
                         </div>
                     </SheetContent>
                 </Sheet>

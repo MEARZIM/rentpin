@@ -36,6 +36,7 @@ const RegisterPage = () => {
 
     const onSubmit = async (data: RegisterFormValues) => {
         setIsLoading(true)
+        // Simulate API call
         await new Promise(resolve => setTimeout(resolve, 1500))
         setIsLoading(false)
         setStep('verify')
@@ -63,51 +64,12 @@ const RegisterPage = () => {
 
             <div className="w-full max-w-7xl grid lg:grid-cols-12 gap-16 lg:gap-12 items-start">
 
-                {/* Editorial Voice */}
-                <motion.div
-                    initial={{ opacity: 0, x: -30 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ type: "spring", stiffness: 50, damping: 20, delay: 0.2 }}
-                    className="lg:col-span-5 space-y-12 pr-6"
-                >
-                    <div>
-                        <span className="text-[#006948] text-xs font-bold uppercase tracking-[0.2em] block mb-4">Join The Community</span>
-                        <h1 className="font-heading text-5xl md:text-7xl font-bold text-[#171c1f] leading-none tracking-tighter">
-                            Create your <br /> direct <span className="italic font-serif font-light text-[#006948]">account</span>
-                        </h1>
-                        <p className="mt-8 text-[#404944] text-lg md:text-xl leading-relaxed max-w-md opacity-90">
-                            No brokers. No hidden fees. Just direct connections to thoughtful hosts.
-                        </p>
-                    </div>
-
-                    <div className="space-y-6">
-                        {steps.map((step, i) => (
-                            <motion.div
-                                key={i}
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ delay: 0.5 + i * 0.15 }}
-                                className="flex items-center gap-5 p-5 bg-white rounded-3xl shadow-sm border border-[#bccac0]/10"
-                            >
-                                <div className="w-14 h-14 rounded-full bg-[#006948]/5 flex items-center justify-center text-[#006948]">
-                                    {React.cloneElement(step.icon as React.ReactElement, { size: 24 } as any)}
-                                </div>
-                                <div>
-                                    <h4 className="font-heading text-lg font-bold text-[#171c1f] mb-1">{step.title}</h4>
-                                    <p className="text-sm text-[#404944]/80">{step.desc}</p>
-                                </div>
-                                <CheckCircle size={20} className="ml-auto text-[#006948]/20" />
-                            </motion.div>
-                        ))}
-                    </div>
-                </motion.div>
-
-                {/* Logic Managed Form */}
+                {/* Logic Managed Form (Top on Mobile) */}
                 <motion.div
                     initial={{ opacity: 0, scale: 0.98, x: 30 }}
                     animate={{ opacity: 1, scale: 1, x: 0 }}
                     transition={{ type: "spring", stiffness: 50, damping: 20, delay: 0.3 }}
-                    className="lg:col-span-7 bg-white rounded-[3rem] p-10 md:p-14 shadow-[0_48px_80px_-20px_rgba(23,28,31,0.08)] relative overflow-hidden min-h-150"
+                    className="order-1 lg:order-2 lg:col-span-7 bg-white rounded-[3rem] p-10 md:p-14 shadow-[0_48px_80px_-20px_rgba(23,28,31,0.08)] relative overflow-hidden min-h-150"
                 >
                     <AnimatePresence mode="wait">
                         {step === 'details' ? (
@@ -128,7 +90,7 @@ const RegisterPage = () => {
                                                     {...register("firstName")}
                                                 />
                                             </FieldContent>
-                                            <FieldError errors={[errors.firstName]} className="text-[10px] ml-2" />
+                                            <FieldError errors={[errors.firstName]} className="text-[10px] ml-2 text-red-500" />
                                         </Field>
 
                                         <Field invalid={!!errors.lastName}>
@@ -140,7 +102,7 @@ const RegisterPage = () => {
                                                     {...register("lastName")}
                                                 />
                                             </FieldContent>
-                                            <FieldError errors={[errors.lastName]} className="text-[10px] ml-2" />
+                                            <FieldError errors={[errors.lastName]} className="text-[10px] ml-2 text-red-500" />
                                         </Field>
                                     </FieldGroup>
 
@@ -154,13 +116,13 @@ const RegisterPage = () => {
                                                 {...register("email")}
                                             />
                                         </FieldContent>
-                                        <FieldError errors={[errors.email]} className="text-[10px] ml-2" />
+                                        <FieldError errors={[errors.email]} className="text-[10px] ml-2 text-red-500" />
                                     </Field>
 
                                     <Field invalid={!!errors.phone}>
                                         <FieldLabel className="text-[10px] font-bold uppercase tracking-widest text-[#006948] ml-2">Phone Number</FieldLabel>
                                         <FieldContent className="flex h-14 rounded-2xl bg-[#f0f4f8] overflow-hidden focus-within:ring-1 focus-within:ring-[#006948]/20 transition-all">
-                                            <div className="flex items-center px-5 border-r border-[#bccac0]/20 text-sm font-bold text-[#171c1f]">+1</div>
+                                            <div className="flex items-center px-5 border-r border-[#bccac0]/20 text-sm font-bold text-[#171c1f]">+91</div>
                                             <Input
                                                 type="tel"
                                                 placeholder="Mobile number"
@@ -168,13 +130,13 @@ const RegisterPage = () => {
                                                 {...register("phone")}
                                             />
                                         </FieldContent>
-                                        <FieldError errors={[errors.phone]} className="text-[10px] ml-2" />
+                                        <FieldError errors={[errors.phone]} className="text-[10px] ml-2 text-red-500" />
                                     </Field>
 
                                     <Button
                                         type="submit"
                                         disabled={isLoading}
-                                        className="w-full rounded-2xl h-16 text-base font-bold bg-[#006948] hover:bg-[#005a3e] shadow-lg shadow-[#006948]/20 group transition-all"
+                                        className="w-full rounded-2xl h-16 text-base font-bold bg-[#006948] hover:bg-[#005a3e] shadow-lg shadow-[#006948]/20 group transition-all text-white"
                                     >
                                         {isLoading ? <Loader2 className="animate-spin mx-auto" /> : (
                                             <>
@@ -226,6 +188,46 @@ const RegisterPage = () => {
                         )}
                     </AnimatePresence>
                 </motion.div>
+
+                {/* Editorial Voice (Bottom on Mobile) */}
+                <motion.div
+                    initial={{ opacity: 0, x: -30 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ type: "spring", stiffness: 50, damping: 20, delay: 0.2 }}
+                    className="order-2 lg:order-1 lg:col-span-5 space-y-12 lg:pr-6"
+                >
+                    <div>
+                        <span className="text-[#006948] text-xs font-bold uppercase tracking-[0.2em] block mb-4">Join The Community</span>
+                        <h1 className="font-heading text-5xl md:text-7xl font-bold text-[#171c1f] leading-none tracking-tighter">
+                            Create your <br /> direct <span className="italic font-serif font-light text-[#006948]">account</span>
+                        </h1>
+                        <p className="mt-8 text-[#404944] text-lg md:text-xl leading-relaxed max-w-md opacity-90">
+                            No brokers. No hidden fees. Just direct connections to thoughtful hosts.
+                        </p>
+                    </div>
+
+                    <div className="space-y-6">
+                        {steps.map((step, i) => (
+                            <motion.div
+                                key={i}
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ delay: 0.5 + i * 0.15 }}
+                                className="flex items-center gap-5 p-5 bg-white rounded-3xl shadow-sm border border-[#bccac0]/10"
+                            >
+                                <div className="w-14 h-14 rounded-full bg-[#006948]/5 flex items-center justify-center text-[#006948]">
+                                    {React.cloneElement(step.icon as React.ReactElement, { size: 24 } as any)}
+                                </div>
+                                <div>
+                                    <h4 className="font-heading text-lg font-bold text-[#171c1f] mb-1">{step.title}</h4>
+                                    <p className="text-sm text-[#404944]/80">{step.desc}</p>
+                                </div>
+                                <CheckCircle size={20} className="ml-auto text-[#006948]/20" />
+                            </motion.div>
+                        ))}
+                    </div>
+                </motion.div>
+
             </div>
 
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.8 }} className="mt-16 text-center">
