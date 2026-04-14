@@ -1,6 +1,7 @@
 'use client';
 
 import { Menu } from 'lucide-react';
+import Link from 'next/link';
 
 import {
     Sheet,
@@ -12,14 +13,13 @@ import {
 } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import RentPinLogo from '@/components/icons/logo';
-import Link from 'next/link';
 
 const Nav = () => {
     const navItems = [
         { name: 'Explore', href: '/' },
         { name: 'Saved', href: '#' },
         { name: 'Listings', href: '#' },
-        { name: 'Profile', href: '#' },
+        { name: 'Profile', href: '/profile' },
     ];
 
     return (
@@ -74,14 +74,14 @@ const Nav = () => {
                         </SheetHeader>
                         <div className="flex flex-col gap-8">
                             {navItems.map((item) => (
-                                <a
+                                <Link
                                     key={item.name}
                                     href={item.href}
                                     className="text-lg font-heading font-semibold text-[#171c1f] hover:text-[#006948] transition-colors flex items-center justify-between"
                                 >
                                     {item.name}
                                     <span className="text-[#bccac0]/40">→</span>
-                                </a>
+                                </Link>
                             ))}
                             <hr className="border-[#bccac0]/15" />
                             <Link href={'/login'} className="w-full bg-[#006948] text-white text-center py-4 rounded-2xl font-bold shadow-lg shadow-[#006948]/10 active:scale-[0.98] transition-transform">
