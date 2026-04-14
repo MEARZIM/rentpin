@@ -75,7 +75,7 @@ export default function CuratedSanctuary() {
                                 initial={{ y: "100%", opacity: 0 }}
                                 animate={{ y: 0, opacity: 1 }}
                                 exit={{ y: "100%", opacity: 0 }}
-                                className="absolute bottom-24 left-4 right-4 z-2000 bg-white rounded-3xl p-3 shadow-2xl flex gap-4"
+                                className="absolute top-80 left-4 right-4 z-2000 bg-white rounded-3xl p-3 shadow-2xl flex gap-4"
                             >
                                 <div className="w-32 h-24 rounded-[16px] overflow-hidden shrink-0">
                                     <img src={activeProperty.image} className="w-full h-full object-cover" />
@@ -139,7 +139,7 @@ export default function CuratedSanctuary() {
 
                 {/*  MOBILE TOGGLE  */}
                 {windowWidth > 0 && (
-                    <div className="fixed bottom-22 left-1/2 -translate-x-1/2 z-3000 md:hidden">
+                    <div className="fixed bottom-22 left-1/2 -translate-x-1/2 z-50 md:hidden">
                         <div className="bg-[#171c1f] p-1 rounded-full flex gap-1 shadow-2xl border border-white/10">
                             <button onClick={() => setViewMode('map')} className={`flex items-center gap-2 px-6 py-2.5 rounded-full text-xs font-bold uppercase transition-all duration-300 ${viewMode === 'map' ? 'bg-[#006948] text-white' : 'text-white/40'}`}>
                                 <MapIcon size={14} /> Map

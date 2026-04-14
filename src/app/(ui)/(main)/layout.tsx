@@ -4,7 +4,7 @@ import { MountProvider } from '@/providers/MountProvider'
 import Nav from '@/components/Navbar'
 import MobileBottomNav from '@/components/Bottom.nav'
 
-const AuthLayout = ({
+const MaainLayout = ({
     children
 }: {
     children: React.ReactNode
@@ -20,4 +20,4 @@ const AuthLayout = ({
     )
 }
 
-export default AuthLayout
+export default MaainLayout

@@ -98,7 +98,6 @@
     @apply font-heading tracking-tight;
   }
 
-  /* Applying the 1.6x leading logic from DESIGN.md */
   p,
   .body-lg {
     line-height: 1.6;
