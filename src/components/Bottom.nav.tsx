@@ -15,7 +15,7 @@ const MobileBottomNav = () => {
         { label: 'Explore', icon: Search, href: '/' },
         { label: 'Map', icon: Map, href: '/map' },
         { label: 'Saved', icon: Heart, href: '/#' },
-        { label: 'Profile', icon: User, href: '/##' },
+        { label: 'Profile', icon: User, href: '/profile' },
     ];
 
     return (
