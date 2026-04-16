@@ -3,6 +3,7 @@ import React from 'react'
 import { MountProvider } from '@/providers/MountProvider'
 import Nav from '@/components/Navbar'
 import MobileBottomNav from '@/components/Bottom.nav'
+import Footer from '@/components/Footer'
 
 const MaainLayout = ({
     children
@@ -15,6 +16,7 @@ const MaainLayout = ({
                 <Nav />
                 {children}
                 <MobileBottomNav />
+                <Footer />
             </MountProvider>
         </>
     )

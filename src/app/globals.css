@@ -119,3 +119,8 @@
   background: #bccac033;
   border-radius: 10px;
 }
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+}
