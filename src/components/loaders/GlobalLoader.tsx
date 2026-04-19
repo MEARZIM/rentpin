@@ -16,7 +16,7 @@ const GlobalLoader = ({ isLoading }: GlobalLoaderProps) => {
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                    
-                    className="fixed inset-0 z-9999 flex items-center justify-center bg-white/80 backdrop-blur-2xl"
+                    className="fixed inset-0 z-9999 flex h-screen w-screen items-center justify-center bg-white/80 backdrop-blur-2xl"
                 >
                     <div className="relative flex flex-col items-center">
 

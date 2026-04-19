@@ -13,12 +13,17 @@ import {
 } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import RentPinLogo from '@/components/icons/logo';
+import { usePathname } from 'next/navigation';
+import { cn } from '@/lib/utils';
 
 const Nav = () => {
+    const pathname = usePathname();
+    const isActive = (path: string) => pathname === path;
+
     const navItems = [
         { name: 'Explore', href: '/' },
         { name: 'Saved', href: '#' },
-        { name: 'Listings', href: '#' },
+        { name: 'Find Rentals', href: '/rent' },
         { name: 'Profile', href: '/profile' },
     ];
 
@@ -38,16 +43,18 @@ const Nav = () => {
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center gap-10 text-sm font-medium text-[#404944]">
-                {navItems.map((item) => (
-                    <Link
+                {navItems.map((item) => {
+                    const active = isActive(item.href);
+
+                    return <Link
                         key={item.name}
                         href={item.href}
-                        className="hover:text-[#006948] transition-colors relative group"
+                        className={cn("hover:text-[#006948] transition-colors relative group ", active ? 'text-[#006948]' : 'text-[#171c1f]/40')}
                     >
                         {item.name}
-                        <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#006948] transition-all group-hover:w-full" />
+                        <span className={cn("absolute -bottom-1 left-0 w-0 h-0.5 bg-[#006948] transition-all group-hover:w-full", active && 'w-full')} />
                     </Link>
-                ))}
+                })}
                 {/* Signature Primary CTA */}
                 <Link href={'/login'} className="bg-linear-to-br from-[#006948] to-[#00855d] text-white px-7 py-2.5 rounded-full font-semibold hover:shadow-xl hover:opacity-95 transition-all active:scale-95">
                     Become a Host
